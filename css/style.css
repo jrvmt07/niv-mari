@@ -1,0 +1,2087 @@
+
+/* ========================================
+   CONFIGURAÇÕES GERAIS
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    background: #090016;
+    font-family: Georgia, serif;
+}
+
+.universo {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    background: #090016;
+}
+
+
+/* ========================================
+   FUNDO ESPACIAL COMPARTILHADO
+======================================== */
+
+.fundo-compartilhado {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 50%,
+            #19052f 0%,
+            #100020 48%,
+            #080014 100%
+        );
+}
+
+
+/* ========================================
+   NEBULOSAS
+======================================== */
+
+.nebulosa {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(65px);
+    pointer-events: none;
+
+    animation: nebulosaMovimento 18s ease-in-out infinite alternate;
+}
+
+.nebulosa-1 {
+    width: 350px;
+    height: 250px;
+    background: #570b91;
+    opacity: 0.19;
+    left: -120px;
+    bottom: 5%;
+}
+
+.nebulosa-2 {
+    width: 400px;
+    height: 300px;
+    background: #a21c9b;
+    opacity: 0.13;
+    right: -150px;
+    top: 5%;
+    animation-delay: -8s;
+}
+
+.nebulosa-3 {
+    width: 300px;
+    height: 200px;
+    background: #3825a3;
+    opacity: 0.15;
+    right: 20%;
+    bottom: -100px;
+    animation-delay: -4s;
+}
+
+@keyframes nebulosaMovimento {
+
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+
+    to {
+        transform: translate(35px, -25px) scale(1.15);
+    }
+
+}
+
+
+/* ========================================
+   CAMPO DE ESTRELAS
+======================================== */
+
+#campo-estrelas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+
+/* ========================================
+   ESTRELAS DECORATIVAS
+======================================== */
+
+.estrela-decorativa {
+    position: absolute;
+    z-index: 2;
+
+    color: #f9d58d;
+    font-size: 25px;
+
+    text-shadow: 0 0 12px #e6b8ff;
+
+    animation: brilhoEstrela 3s ease-in-out infinite;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.estrela-1 {
+    top: 28%;
+    left: 26%;
+}
+
+.estrela-2 {
+    top: 15%;
+    right: 30%;
+    animation-delay: -1s;
+}
+
+.estrela-3 {
+    bottom: 25%;
+    right: 15%;
+    animation-delay: -2s;
+}
+
+.estrela-4 {
+    bottom: 20%;
+    left: 20%;
+    animation-delay: -1.5s;
+}
+
+@keyframes brilhoEstrela {
+
+    0%, 100% {
+        opacity: 0.45;
+        transform: scale(0.85);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+
+}
+
+
+/* Algumas estrelas desaparecem na transição */
+
+.universo.transicao-iniciada .estrela-2,
+.universo.transicao-iniciada .estrela-4 {
+    opacity: 0;
+    transform: scale(0.2);
+}
+
+
+/* ========================================
+   CENAS
+======================================== */
+
+.cena {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+}
+
+.cena-login {
+    z-index: 2;
+    opacity: 1;
+
+    transition: opacity 1.2s ease;
+}
+
+.cena-planetas {
+    z-index: 1;
+    opacity: 1;
+    pointer-events: none;
+}
+
+
+/* Login desaparece sem movimentar o fundo */
+
+.universo.transicao-iniciada .cena-login {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.universo.transicao-iniciada .cena-planetas {
+    z-index: 3;
+    pointer-events: auto;
+}
+
+
+/* ========================================
+   LUA
+======================================== */
+
+.lua {
+    position: absolute;
+    width: 125px;
+    height: 125px;
+    top: 12%;
+    left: 13%;
+    z-index: 2;
+
+    animation: flutuar 8s ease-in-out infinite;
+
+    transition:
+        opacity 1s ease,
+        transform 1.2s ease;
+}
+
+.lua svg,
+.sol svg {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes flutuar {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+
+/* ========================================
+   SOL
+======================================== */
+
+.sol {
+    position: absolute;
+    width: 125px;
+    height: 125px;
+    top: 12%;
+    right: 10%;
+    z-index: 2;
+
+    animation: flutuar 9s ease-in-out infinite;
+
+    transition:
+        opacity 1s ease,
+        transform 1.2s ease;
+}
+
+.raios-sol {
+    transform-box: view-box;
+    transform-origin: 100px 100px;
+    animation: girarSol 60s linear infinite;
+}
+
+@keyframes girarSol {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* Lua e sol desaparecem */
+
+.universo.transicao-iniciada .lua {
+    opacity: 0;
+    transform: translate(-70px, -30px) scale(0.5);
+}
+
+.universo.transicao-iniciada .sol {
+    opacity: 0;
+    transform: translate(70px, -30px) scale(0.5);
+}
+
+
+/* ========================================
+   PLANETAS DECORATIVOS DA PRIMEIRA TELA
+======================================== */
+
+.planeta-fundo {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
+
+    animation: flutuar 10s ease-in-out infinite;
+
+    transition:
+        opacity 1s ease,
+        transform 1.2s ease;
+}
+
+.planeta-fundo-1 {
+    width: 115px;
+    height: 115px;
+    right: -30px;
+    bottom: 12%;
+
+    background: linear-gradient(135deg, #8c4ab5, #35134f 65%, #160925);
+
+    box-shadow:
+        inset -18px -10px 30px #10051d,
+        0 0 20px #8d36b4;
+}
+
+.planeta-fundo-1::after {
+    content: "";
+    position: absolute;
+    width: 155px;
+    height: 28px;
+    border: 2px solid #b76bdf;
+    border-radius: 50%;
+    top: 42px;
+    left: -20px;
+    transform: rotate(-20deg);
+}
+
+.planeta-fundo-2 {
+    width: 55px;
+    height: 55px;
+    left: 6%;
+    top: 42%;
+
+    background: linear-gradient(135deg, #733a9b, #24113e);
+
+    box-shadow: 0 0 20px #7f3aab;
+
+    animation-delay: -4s;
+}
+
+.planeta-fundo-3 {
+    width: 150px;
+    height: 150px;
+    left: -85px;
+    bottom: -55px;
+
+    background: linear-gradient(135deg, #813d9c, #25103e 70%, #10051d);
+
+    box-shadow: 0 0 30px #7b2ca0;
+
+    animation-delay: -2s;
+}
+
+
+/* Planetas decorativos desaparecem */
+
+.universo.transicao-iniciada .planeta-fundo {
+    opacity: 0;
+    transform: scale(0.3);
+}
+
+
+/* ========================================
+   LOGIN
+======================================== */
+
+.login-container {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 440px;
+
+    padding: 38px 35px 27px;
+
+    background: rgba(25, 9, 42, 0.78);
+
+    border: 1px solid rgba(204, 154, 255, 0.24);
+    border-radius: 24px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 35px rgba(113, 43, 160, 0.16),
+        0 20px 60px rgba(0, 0, 0, 0.3);
+
+    animation: aparecerLogin 1.2s ease both;
+}
+
+@keyframes aparecerLogin {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.icone-lua {
+    font-size: 38px;
+    color: #f4cb79;
+    margin-bottom: 12px;
+    text-shadow: 0 0 15px rgba(255, 205, 110, 0.5);
+}
+
+.login-header h1 {
+    font-size: 27px;
+    font-weight: normal;
+    color: #fff0d5;
+    margin-bottom: 12px;
+}
+
+.login-header p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #d5c0e3;
+}
+
+
+/* ========================================
+   DIVISORES
+======================================== */
+
+.divisor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 22px;
+    color: #e8b86a;
+}
+
+.divisor::before,
+.divisor::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(232, 184, 106, 0.55)
+    );
+}
+
+.divisor::after {
+    transform: rotate(180deg);
+}
+
+
+/* ========================================
+   CAMPOS DO LOGIN
+======================================== */
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 23px;
+}
+
+.campo-grupo label {
+    color: #f3d9fa;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.campo-grupo input {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+
+    border-radius: 10px;
+    border: 1px solid rgba(196, 145, 225, 0.3);
+
+    outline: none;
+
+    background: rgba(13, 3, 27, 0.7);
+    color: #fff0fa;
+
+    font-family: Georgia, serif;
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.campo-grupo input::placeholder {
+    color: #9d86aa;
+}
+
+.campo-grupo input:focus {
+    border-color: #c78af2;
+    box-shadow: 0 0 12px rgba(181, 108, 226, 0.2);
+}
+
+
+/* ========================================
+   DICAS
+======================================== */
+
+.botao-dica {
+    align-self: flex-start;
+    margin-top: 10px;
+
+    border: none;
+    background: none;
+
+    color: #d5a4f4;
+
+    font-family: Georgia, serif;
+    font-size: 12px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao-dica:hover {
+    color: #ffe2a2;
+    transform: translateX(3px);
+}
+
+.mensagem-dica {
+    display: none;
+    margin-top: 10px;
+    padding: 12px 14px;
+
+    background: rgba(112, 54, 145, 0.18);
+
+    border-left: 2px solid #d5a0ed;
+    border-radius: 5px;
+
+    color: #f4dca4;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.mensagem-dica.ativa {
+    display: block;
+}
+
+
+/* ========================================
+   BOTÃO ENTRAR
+======================================== */
+
+.botao-entrar {
+    width: 100%;
+    min-height: 51px;
+    margin-top: 8px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: linear-gradient(100deg, #8136bc, #bb64e8);
+
+    color: white;
+
+    font-family: Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow: 0 0 20px rgba(174, 83, 222, 0.25);
+
+    transition: 0.3s;
+}
+
+.botao-entrar span {
+    margin-left: 7px;
+    color: #ffe6a5;
+}
+
+.botao-entrar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 28px rgba(194, 108, 245, 0.5);
+}
+
+.botao-entrar:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+
+/* ========================================
+   MENSAGENS E RODAPÉ DO LOGIN
+======================================== */
+
+.mensagem-login {
+    min-height: 18px;
+    margin: -8px 0 12px;
+
+    text-align: center;
+
+    color: #ffd78d;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.login-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+
+    margin-top: 25px;
+
+    color: #bda3cc;
+    font-size: 11px;
+    text-align: center;
+}
+
+.login-footer span {
+    color: #e8bd74;
+}
+
+
+/* ========================================
+   SEGUNDA TELA
+======================================== */
+
+.exploracao-conteudo {
+    position: relative;
+    z-index: 3;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: 1050px;
+    margin: 0 auto;
+
+    padding: 35px 30px 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ========================================
+   CABEÇALHO DA SEGUNDA TELA
+======================================== */
+
+.exploracao-header {
+    text-align: center;
+    margin-bottom: 15px;
+
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+.universo.transicao-iniciada .exploracao-header {
+    animation: aparecerCabecalho 0.8s ease 0.3s forwards;
+}
+
+@keyframes aparecerCabecalho {
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.pequeno-detalhe {
+    display: block;
+    margin-bottom: 15px;
+
+    color: #e8bd74;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.exploracao-header h1 {
+    color: #fff0d5;
+
+    font-size: clamp(25px, 4vw, 38px);
+    font-weight: normal;
+
+    margin-bottom: 13px;
+
+    text-shadow: 0 0 20px rgba(221, 169, 255, 0.18);
+}
+
+.exploracao-header p {
+    color: #d5c0e3;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.exploracao-header .divisor {
+    max-width: 280px;
+    margin: 22px auto 0;
+}
+
+
+/* ========================================
+   SISTEMA DE PLANETAS
+======================================== */
+
+.sistema-planetas {
+    position: relative;
+
+    width: min(900px, 94vw);
+    height: min(390px, 55vh);
+
+    min-height: 320px;
+
+    margin: 0 auto;
+}
+
+
+/* ========================================
+   CARTÕES DOS PLANETAS
+======================================== */
+
+.planeta-card {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    width: 165px;
+    padding: 10px;
+
+    border: 1px solid transparent;
+    border-radius: 20px;
+
+    background: transparent;
+
+    opacity: 0;
+    transform: translateY(25px) scale(0.6);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+
+    will-change: transform, opacity;
+}
+
+.planeta-card:hover {
+    background: rgba(128, 75, 160, 0.12);
+    border-color: rgba(215, 171, 245, 0.2);
+}
+
+
+/* ========================================
+   POSICIONAMENTO ASSIMÉTRICO
+======================================== */
+
+/* Fotos: superior esquerdo */
+
+.planeta-card-1 {
+    left: 7%;
+    top: 0;
+}
+
+/* Vídeos: superior direito */
+
+.planeta-card-2 {
+    right: 5%;
+    top: 8%;
+}
+
+/* Sonhos: inferior esquerdo, mais centralizado */
+
+.planeta-card-3 {
+    left: 29%;
+    bottom: 0;
+}
+
+/* Cute Cute: inferior direito, mais para o centro */
+
+.planeta-card-4 {
+    left: 63%;
+    bottom: 0;
+}
+
+
+/* ========================================
+   ANIMAÇÃO DE ENTRADA DOS PLANETAS
+======================================== */
+
+.universo.transicao-iniciada .planeta-card-1 {
+    animation: planetaEntrar 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
+}
+
+.universo.transicao-iniciada .planeta-card-2 {
+    animation: planetaEntrar 1s cubic-bezier(0.2, 0.8, 0.2, 1) 1.1s forwards;
+}
+
+.universo.transicao-iniciada .planeta-card-3 {
+    animation: planetaEntrar 1s cubic-bezier(0.2, 0.8, 0.2, 1) 1.7s forwards;
+}
+
+.universo.transicao-iniciada .planeta-card-4 {
+    animation: planetaEntrar 1s cubic-bezier(0.2, 0.8, 0.2, 1) 2.3s forwards;
+}
+
+@keyframes planetaEntrar {
+
+    0% {
+        opacity: 0;
+        transform: translateY(25px) scale(0.6);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* ========================================
+   APARÊNCIA DOS PLANETAS
+======================================== */
+
+.planeta-ilustrado {
+    position: relative;
+
+    display: block;
+
+    width: 125px;
+    aspect-ratio: 1;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    overflow: visible;
+
+    box-shadow:
+        inset -14px -13px 22px rgba(0, 0, 0, 0.35),
+        inset 7px 7px 17px rgba(255, 255, 255, 0.22),
+        0 0 25px rgba(177, 126, 226, 0.16);
+}
+
+
+/* ========================================
+   FLUTUAÇÃO DOS PLANETAS
+======================================== */
+
+.planeta-card-1 .planeta-ilustrado {
+    animation: planetaFlutuar 6s ease-in-out infinite;
+}
+
+.planeta-card-2 .planeta-ilustrado {
+    animation: planetaFlutuar 7s ease-in-out infinite -2s;
+}
+
+.planeta-card-3 .planeta-ilustrado {
+    animation: planetaFlutuar 8s ease-in-out infinite -4s;
+}
+
+.planeta-card-4 .planeta-ilustrado {
+    animation: planetaFlutuar 6.5s ease-in-out infinite -1s;
+}
+
+@keyframes planetaFlutuar {
+
+    0%, 100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -10px;
+    }
+
+}
+
+
+/* ========================================
+   MANCHAS DOS PLANETAS
+======================================== */
+
+.mancha {
+    position: absolute;
+    display: block;
+
+    border-radius: 50%;
+    opacity: 0.5;
+
+    filter: blur(1px);
+}
+
+
+/* ========================================
+   PLANETA FOTOS - ROSA
+======================================== */
+
+.planeta-rosa {
+
+    background:
+        radial-gradient(ellipse at 30% 25%, #ffc2a9 0%, transparent 28%),
+        radial-gradient(ellipse at 70% 65%, #9c334b 0%, transparent 40%),
+        linear-gradient(145deg, #ffb18c, #e95e70 50%, #8d294e);
+
+}
+
+.planeta-rosa .mancha-1 {
+    width: 42%;
+    height: 20%;
+    top: 25%;
+    left: 12%;
+
+    background: #ffd5b4;
+    transform: rotate(-25deg);
+}
+
+.planeta-rosa .mancha-2 {
+    width: 55%;
+    height: 15%;
+    top: 57%;
+    left: 25%;
+
+    background: #a82f50;
+    transform: rotate(18deg);
+}
+
+.planeta-rosa .mancha-3 {
+    width: 25%;
+    height: 22%;
+    top: 18%;
+    right: 14%;
+
+    background: #ffe0b4;
+}
+
+
+/* ========================================
+   PLANETA VÍDEOS - AZUL
+======================================== */
+
+.planeta-azul {
+
+    background:
+        radial-gradient(ellipse at 30% 25%, #b4efff 0%, transparent 30%),
+        radial-gradient(ellipse at 70% 70%, #154b82 0%, transparent 45%),
+        linear-gradient(145deg, #8de3f4, #3b9bc5 50%, #17436e);
+
+}
+
+.planeta-azul .mancha-1 {
+    width: 55%;
+    height: 18%;
+    top: 25%;
+    left: 10%;
+
+    background: #d4f5ec;
+    transform: rotate(-30deg);
+}
+
+.planeta-azul .mancha-2 {
+    width: 35%;
+    height: 24%;
+    top: 55%;
+    right: 12%;
+
+    background: #1b5486;
+}
+
+.planeta-azul .mancha-3 {
+    width: 20%;
+    height: 13%;
+    top: 70%;
+    left: 22%;
+
+    background: #b1e8f0;
+}
+
+
+/* ========================================
+   PLANETA SONHOS - DOURADO
+======================================== */
+
+.planeta-dourado {
+
+    background:
+        radial-gradient(ellipse at 30% 25%, #fff2b5 0%, transparent 30%),
+        radial-gradient(ellipse at 70% 70%, #c77a31 0%, transparent 45%),
+        linear-gradient(145deg, #ffe9a0, #f5b94d 55%, #b66a2e);
+
+}
+
+.planeta-dourado .mancha-1 {
+    width: 35%;
+    height: 22%;
+    top: 20%;
+    left: 18%;
+
+    background: #fff2bd;
+}
+
+.planeta-dourado .mancha-2 {
+    width: 50%;
+    height: 16%;
+    top: 55%;
+    left: 30%;
+
+    background: #d88b3d;
+    transform: rotate(-20deg);
+}
+
+.planeta-dourado .mancha-3 {
+    width: 20%;
+    height: 20%;
+    top: 35%;
+    right: 15%;
+
+    background: #fff0bc;
+}
+
+
+/* ========================================
+   PLANETA CUTE CUTE - VERDE
+======================================== */
+
+.planeta-verde {
+
+    background:
+        radial-gradient(ellipse at 30% 25%, #c5e8a0 0%, transparent 30%),
+        radial-gradient(ellipse at 70% 70%, #205b4a 0%, transparent 45%),
+        linear-gradient(145deg, #a5d98a, #4e9a68 55%, #245345);
+
+}
+
+.planeta-verde .mancha-1 {
+    width: 48%;
+    height: 18%;
+    top: 27%;
+    left: 12%;
+
+    background: #d9efaa;
+    transform: rotate(25deg);
+}
+
+.planeta-verde .mancha-2 {
+    width: 35%;
+    height: 24%;
+    top: 55%;
+    right: 13%;
+
+    background: #28644c;
+}
+
+.planeta-verde .mancha-3 {
+    width: 20%;
+    height: 18%;
+    top: 18%;
+    right: 18%;
+
+    background: #e4f1b7;
+}
+
+
+/* ========================================
+   ANÉIS
+======================================== */
+
+.anel {
+    position: absolute;
+
+    width: 145%;
+    height: 30%;
+
+    top: 36%;
+    left: -22%;
+
+    border: 5px solid rgba(255, 218, 170, 0.8);
+
+    border-left-color: rgba(255, 218, 170, 0.35);
+    border-right-color: rgba(255, 218, 170, 0.35);
+
+    border-radius: 50%;
+
+    transform: rotate(-22deg);
+
+    z-index: -1;
+}
+
+.planeta-card-1 .anel {
+    border-color: rgba(255, 186, 195, 0.8);
+}
+
+.planeta-card-3 .anel {
+    border-color: rgba(255, 221, 150, 0.85);
+}
+
+
+/* ========================================
+   NOMES DOS PLANETAS
+======================================== */
+
+.nome-planeta {
+    color: #fff0d5;
+    font-size: 15px;
+    white-space: nowrap;
+
+    text-shadow: 0 2px 8px #080014;
+}
+
+
+/* ========================================
+   RODAPÉ DA SEGUNDA TELA
+======================================== */
+
+.exploracao-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 5px;
+
+    color: #c9afd8;
+    font-size: 12px;
+
+    opacity: 0;
+}
+
+.exploracao-footer span {
+    color: #e8bd74;
+}
+
+.universo.transicao-iniciada .exploracao-footer {
+    animation: aparecerCabecalho 0.8s ease 2.8s forwards;
+}
+
+
+/* ========================================
+   RESPONSIVIDADE - CELULARES
+======================================== */
+
+@media (max-width: 700px) {
+
+    .lua {
+        width: 85px;
+        height: 85px;
+        top: 7%;
+        left: 5%;
+    }
+
+    .sol {
+        width: 90px;
+        height: 90px;
+        top: 7%;
+        right: 5%;
+    }
+
+    .login-container {
+        padding: 15px;
+    }
+
+    .login-card {
+        max-width: 390px;
+        padding: 28px 23px 23px;
+    }
+
+    .login-header {
+        margin-bottom: 23px;
+    }
+
+    .login-header h1 {
+        font-size: 23px;
+    }
+
+    .login-header p {
+        font-size: 12px;
+    }
+
+    .campo-grupo {
+        margin-bottom: 19px;
+    }
+
+
+    /* Segunda tela */
+
+    .exploracao-conteudo {
+        padding: 25px 10px 15px;
+    }
+
+    .exploracao-header {
+        margin-bottom: 5px;
+    }
+
+    .exploracao-header h1 {
+        font-size: 25px;
+    }
+
+    .exploracao-header p {
+        font-size: 12px;
+    }
+
+    .sistema-planetas {
+        width: 100%;
+        height: 55vh;
+        min-height: 340px;
+        max-height: 440px;
+    }
+
+    .planeta-card {
+        width: 140px;
+        gap: 8px;
+        padding: 5px;
+    }
+
+    .planeta-ilustrado {
+        width: clamp(85px, 23vw, 110px);
+    }
+
+    .planeta-card-1 {
+        left: 0;
+        top: 0;
+    }
+
+    .planeta-card-2 {
+        right: 0;
+        top: 12%;
+    }
+
+    .planeta-card-3 {
+        left: 2%;
+        bottom: 0;
+    }
+
+    .planeta-card-4 {
+        left: auto;
+        right: 0;
+        bottom: 0;
+    }
+
+    .nome-planeta {
+        font-size: 12px;
+    }
+
+    .exploracao-footer {
+        font-size: 10px;
+    }
+
+}
+
+
+/* ========================================
+   TELAS BAIXAS
+======================================== */
+
+@media (max-height: 650px) {
+
+    .login-card {
+        padding-top: 18px;
+        padding-bottom: 15px;
+    }
+
+    .login-header {
+        margin-bottom: 15px;
+    }
+
+    .icone-lua {
+        font-size: 25px;
+        margin-bottom: 5px;
+    }
+
+    .login-header h1 {
+        font-size: 21px;
+        margin-bottom: 6px;
+    }
+
+    .divisor {
+        margin-top: 12px;
+    }
+
+    .campo-grupo {
+        margin-bottom: 12px;
+    }
+
+    .campo-grupo input {
+        height: 42px;
+    }
+
+    .login-footer {
+        margin-top: 15px;
+    }
+
+    .exploracao-conteudo {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .exploracao-header {
+        margin-bottom: 0;
+    }
+
+    .exploracao-header h1 {
+        font-size: 24px;
+    }
+
+    .sistema-planetas {
+        height: 48vh;
+        min-height: 270px;
+    }
+
+    .planeta-ilustrado {
+        width: 85px;
+    }
+
+}
+
+
+/* ========================================
+   MOVIMENTO REDUZIDO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
+/* =========================================
+   MELHORIAS EXCLUSIVAS DA SEGUNDA TELA
+========================================= */
+
+/* Área dos planetas */
+.cena-planetas .sistema-planetas {
+    width: min(1050px, 96vw);
+    height: min(460px, 58vh);
+    min-height: 360px;
+}
+
+/* Cartões maiores e mais espalhados */
+.cena-planetas .planeta-card {
+    width: 195px;
+    gap: 17px;
+}
+
+.cena-planetas .planeta-card-1 {
+    left: 2%;
+    top: 0;
+}
+
+.cena-planetas .planeta-card-2 {
+    right: 1%;
+    top: 3%;
+}
+
+.cena-planetas .planeta-card-3 {
+    left: 27%;
+    bottom: 0;
+}
+
+.cena-planetas .planeta-card-4 {
+    right: 23%;
+    bottom: 0;
+}
+
+/* Planetas maiores */
+.cena-planetas .planeta-ilustrado {
+    width: 165px;
+    aspect-ratio: 1;
+    overflow: visible;
+    isolation: isolate;
+    box-shadow:
+        inset -15px -18px 30px rgba(0, 0, 0, 0.35),
+        inset 8px 8px 20px rgba(255, 255, 255, 0.2),
+        0 0 30px rgba(255, 255, 255, 0.12);
+}
+
+/* Texturas e iluminação */
+.cena-planetas .planeta-ilustrado::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(ellipse at 25% 28%, rgba(255,255,255,0.42), transparent 13%),
+        radial-gradient(ellipse at 68% 23%, rgba(255,255,255,0.2), transparent 10%),
+        radial-gradient(ellipse at 72% 65%, rgba(0,0,0,0.18), transparent 17%),
+        radial-gradient(ellipse at 30% 75%, rgba(0,0,0,0.16), transparent 14%),
+        radial-gradient(ellipse at 48% 48%, transparent 40%, rgba(0,0,0,0.28));
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+}
+
+.cena-planetas .planeta-ilustrado::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: 50%;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,0.25), transparent 35%),
+        linear-gradient(315deg, rgba(0,0,0,0.3), transparent 60%);
+    pointer-events: none;
+}
+
+/* Manchas dos planetas */
+.cena-planetas .mancha {
+    z-index: 1;
+    display: block;
+    border-radius: 50%;
+    opacity: 0.4;
+    filter: blur(1px);
+}
+
+.cena-planetas .mancha-1 {
+    width: 35%;
+    height: 19%;
+    top: 22%;
+    left: 15%;
+    transform: rotate(-25deg);
+}
+
+.cena-planetas .mancha-2 {
+    width: 27%;
+    height: 16%;
+    top: 55%;
+    right: 13%;
+    transform: rotate(35deg);
+}
+
+.cena-planetas .mancha-3 {
+    width: 23%;
+    height: 13%;
+    bottom: 17%;
+    left: 27%;
+    transform: rotate(-12deg);
+}
+
+/* Planeta Fotos — rosa */
+.cena-planetas .planeta-rosa {
+    background:
+        radial-gradient(ellipse at 28% 25%, #ffd1e8, transparent 23%),
+        radial-gradient(ellipse at 72% 68%, #a52f75, transparent 28%),
+        radial-gradient(ellipse at 40% 70%, #e96cae, transparent 30%),
+        repeating-linear-gradient(
+            155deg,
+            transparent 0px,
+            rgba(255, 220, 240, 0.13) 5px,
+            transparent 12px,
+            rgba(126, 34, 98, 0.12) 19px
+        ),
+        linear-gradient(135deg, #ffb8dc, #e45baf 50%, #8c347f);
+}
+
+.cena-planetas .planeta-rosa .mancha {
+    background: #8d286d;
+}
+
+/* Planeta Vídeos — azul */
+.cena-planetas .planeta-azul {
+    background:
+        radial-gradient(ellipse at 30% 25%, #c6f7ff, transparent 20%),
+        radial-gradient(ellipse at 75% 70%, #164e9d, transparent 30%),
+        radial-gradient(ellipse at 30% 70%, #3ba8d6, transparent 28%),
+        repeating-linear-gradient(
+            25deg,
+            transparent 0px,
+            rgba(210, 250, 255, 0.15) 5px,
+            transparent 13px,
+            rgba(15, 56, 130, 0.15) 21px
+        ),
+        linear-gradient(135deg, #a8f0ff, #398dd8 50%, #263e91);
+}
+
+.cena-planetas .planeta-azul .mancha {
+    background: #164b91;
+}
+
+/* Planeta Sonhos — dourado */
+.cena-planetas .planeta-dourado {
+    background:
+        radial-gradient(ellipse at 25% 25%, #fff7bd, transparent 22%),
+        radial-gradient(ellipse at 72% 70%, #b45b1e, transparent 30%),
+        radial-gradient(ellipse at 35% 75%, #f3a72e, transparent 28%),
+        repeating-linear-gradient(
+            145deg,
+            transparent 0px,
+            rgba(255, 245, 180, 0.18) 5px,
+            transparent 13px,
+            rgba(153, 75, 20, 0.12) 20px
+        ),
+        linear-gradient(135deg, #fff0a5, #f4b747 48%, #c66a2c);
+}
+
+.cena-planetas .planeta-dourado .mancha {
+    background: #a65a20;
+}
+
+/* Planeta Cute Cute — verde */
+.cena-planetas .planeta-verde {
+    background:
+        radial-gradient(ellipse at 28% 25%, #d4ffd4, transparent 22%),
+        radial-gradient(ellipse at 75% 68%, #1b684e, transparent 30%),
+        radial-gradient(ellipse at 35% 72%, #58c58a, transparent 28%),
+        repeating-linear-gradient(
+            35deg,
+            transparent 0px,
+            rgba(220, 255, 220, 0.15) 5px,
+            transparent 13px,
+            rgba(20, 80, 55, 0.14) 20px
+        ),
+        linear-gradient(135deg, #c5ffd1, #62ce91 50%, #267b60);
+}
+
+.cena-planetas .planeta-verde .mancha {
+    background: #24664c;
+}
+
+/* Anéis */
+.cena-planetas .anel {
+    width: 155%;
+    height: 36%;
+    top: 32%;
+    left: -27%;
+    border-width: 7px;
+    box-shadow:
+        0 0 10px rgba(255, 220, 240, 0.25),
+        inset 0 0 8px rgba(255, 220, 240, 0.15);
+}
+
+.cena-planetas .planeta-rosa .anel {
+    border-color: rgba(255, 195, 225, 0.65);
+}
+
+.cena-planetas .planeta-dourado .anel {
+    border-color: rgba(255, 224, 150, 0.7);
+}
+
+/* Nomes */
+.cena-planetas .planeta-card h2 {
+    font-size: 16px;
+}
+
+/* =========================================
+   RESPONSIVIDADE DA SEGUNDA TELA
+========================================= */
+
+@media (max-width: 900px) {
+    .cena-planetas .sistema-planetas {
+        width: 95vw;
+        height: 430px;
+    }
+
+    .cena-planetas .planeta-card {
+        width: 160px;
+    }
+
+    .cena-planetas .planeta-ilustrado {
+        width: 135px;
+    }
+
+    .cena-planetas .planeta-card-3 {
+        left: 18%;
+    }
+
+    .cena-planetas .planeta-card-4 {
+        right: 18%;
+    }
+}
+
+@media (max-width: 600px) {
+    .cena-planetas .exploracao-conteudo {
+        padding: 30px 12px 20px;
+    }
+
+    .cena-planetas .exploracao-conteudo h1 {
+        font-size: 25px;
+    }
+
+    .cena-planetas .sistema-planetas {
+        width: 100%;
+        height: 72vh;
+        min-height: 0;
+        margin-top: 20px;
+    }
+
+    .cena-planetas .planeta-card {
+        width: 125px;
+        gap: 10px;
+    }
+
+    .cena-planetas .planeta-ilustrado {
+        width: 105px;
+    }
+
+    .cena-planetas .planeta-card h2 {
+        font-size: 13px;
+    }
+
+    .cena-planetas .planeta-card-1 {
+        left: 3%;
+        top: 2%;
+    }
+
+    .cena-planetas .planeta-card-2 {
+        right: 3%;
+        top: 2%;
+    }
+
+    .cena-planetas .planeta-card-3 {
+        left: 3%;
+        bottom: 5%;
+    }
+
+    .cena-planetas .planeta-card-4 {
+        right: 3%;
+        bottom: 5%;
+    }
+
+    .cena-planetas .anel {
+        border-width: 5px;
+    }
+}
+/* ========================================
+   GALERIA DE FOTOS — PLANETA FOTOS
+======================================== */
+
+.cena-planetas .galeria-fotos {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    overflow-y: auto;
+    padding: 35px 35px 25px;
+
+    background:
+        radial-gradient(ellipse at 50% 40%,
+            rgba(75, 35, 105, 0.25),
+            transparent 65%);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.7s ease,
+        visibility 0.7s ease;
+}
+
+.cena-planetas .galeria-fotos.galeria-aberta {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.cena-planetas .exploracao-conteudo.conteudo-escondido {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+/* Cabeçalho */
+
+.galeria-header {
+    text-align: center;
+    margin: 0 auto 25px;
+    animation: surgirGaleria 0.8s ease both;
+}
+
+.galeria-detalhe {
+    display: block;
+    color: #e8bd74;
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.galeria-header h1 {
+    color: #fff0d5;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: normal;
+    text-shadow: 0 0 20px rgba(221, 169, 255, 0.3);
+}
+
+.galeria-header p {
+    color: #d5c0e3;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.galeria-divisor {
+    color: #e8bd74;
+    margin-top: 15px;
+}
+
+/* Botão de voltar */
+
+.botao-voltar-galeria {
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    z-index: 3;
+
+    padding: 10px 16px;
+    border: 1px solid rgba(215, 171, 245, 0.25);
+    border-radius: 30px;
+
+    background: rgba(35, 17, 55, 0.65);
+    color: #ead6fa;
+
+    font-family: Georgia, serif;
+    font-size: 12px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao-voltar-galeria:hover {
+    background: rgba(130, 75, 160, 0.35);
+    border-color: #d5a4f4;
+    transform: translateX(-3px);
+}
+
+/* Mural de fotos */
+
+.mural-fotos {
+    position: relative;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 28px 25px;
+
+    width: min(1100px, 100%);
+    margin: 35px auto;
+    padding: 15px 10px 35px;
+}
+
+/* Polaroid */
+
+.polaroid {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    width: 190px;
+    padding: 10px 10px 17px;
+
+    border: none;
+    border-radius: 3px;
+
+    background: #fffaf2;
+    color: #49384a;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(225, 183, 255, 0.1);
+
+    transform: rotate(var(--rotacao));
+    opacity: 0;
+
+    cursor: pointer;
+
+    animation: surgirPolaroid 0.7s ease var(--atraso) forwards;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.polaroid:hover {
+    z-index: 5;
+    transform: rotate(0deg) translateY(-10px) scale(1.07);
+
+    box-shadow:
+        0 18px 35px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(225, 183, 255, 0.25);
+}
+
+.polaroid-imagem {
+    position: relative;
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+    background: #251735;
+}
+
+.polaroid-imagem img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.foto-indisponivel {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle at 30% 30%, #704c87, transparent 60%),
+        linear-gradient(135deg, #21152f, #42244f);
+
+    color: #f1d7ff;
+    font-size: 12px;
+    line-height: 2;
+    text-align: center;
+}
+
+.polaroid-legenda {
+    display: block;
+    min-height: 27px;
+    padding: 0 3px;
+
+    color: #59435c;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* Rodapé */
+
+.galeria-footer {
+    padding: 15px 10px 25px;
+    color: #d5c0e3;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Visualizador ampliado */
+
+.visualizador-foto {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+
+    padding: 30px;
+
+    background: rgba(5, 2, 15, 0.88);
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease;
+}
+
+.visualizador-foto.visualizador-aberto {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.foto-ampliada-container {
+    width: min(480px, 70vw);
+    max-height: 85vh;
+
+    padding: 16px 16px 22px;
+
+    background: #fffaf2;
+    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.5);
+
+    transform: scale(0.85);
+    transition: transform 0.35s ease;
+}
+
+.visualizador-aberto .foto-ampliada-container {
+    transform: scale(1);
+}
+
+.foto-ampliada {
+    display: block;
+
+    width: 100%;
+    max-height: 65vh;
+
+    object-fit: contain;
+    background: #21152f;
+}
+
+.legenda-ampliada {
+    padding: 17px 5px 0;
+
+    color: #59435c;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    text-align: center;
+}
+
+.fechar-foto,
+.foto-anterior,
+.proxima-foto {
+    border: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.fechar-foto:hover,
+.foto-anterior:hover,
+.proxima-foto:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.fechar-foto {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+    font-size: 28px;
+}
+
+.foto-anterior,
+.proxima-foto {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    font-size: 35px;
+    line-height: 1;
+}
+
+/* Animações */
+
+@keyframes surgirGaleria {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes surgirPolaroid {
+    from {
+        opacity: 0;
+        transform: translateY(25px) rotate(var(--rotacao)) scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(var(--rotacao)) scale(1);
+    }
+}
+
+/* Responsividade */
+
+@media (max-width: 700px) {
+
+    .cena-planetas .galeria-fotos {
+        padding: 75px 12px 20px;
+    }
+
+    .botao-voltar-galeria {
+        top: 15px;
+        left: 15px;
+    }
+
+    .galeria-header {
+        margin-bottom: 15px;
+    }
+
+    .galeria-header h1 {
+        font-size: 23px;
+    }
+
+    .galeria-header p {
+        font-size: 12px;
+    }
+
+    .mural-fotos {
+        gap: 18px 12px;
+        margin-top: 20px;
+    }
+
+    .polaroid {
+        width: clamp(135px, 42vw, 175px);
+        padding: 8px 8px 13px;
+        gap: 9px;
+    }
+
+    .polaroid-legenda {
+        font-size: 10px;
+    }
+
+    .visualizador-foto {
+        gap: 8px;
+        padding: 15px;
+    }
+
+    .foto-ampliada-container {
+        width: min(75vw, 400px);
+        padding: 10px 10px 16px;
+    }
+
+    .foto-anterior,
+    .proxima-foto {
+        width: 34px;
+        height: 34px;
+        font-size: 27px;
+    }
+
+    .fechar-foto {
+        top: 12px;
+        right: 12px;
+    }
+
+    .legenda-ampliada {
+        font-size: 12px;
+    }
+}

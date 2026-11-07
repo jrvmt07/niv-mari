@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Um Universo Inteiro Para Ela</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="universo">
+
+        <!-- ==================================
+             FUNDO ESPACIAL COMPARTILHADO
+        =================================== -->
+
+        <div class="fundo-compartilhado">
+
+            <div class="nebulosa nebulosa-1"></div>
+            <div class="nebulosa nebulosa-2"></div>
+            <div class="nebulosa nebulosa-3"></div>
+
+            <canvas id="campo-estrelas"></canvas>
+
+            <div class="estrela-decorativa estrela-1">✦</div>
+            <div class="estrela-decorativa estrela-2">✧</div>
+            <div class="estrela-decorativa estrela-3">✦</div>
+            <div class="estrela-decorativa estrela-4">✧</div>
+
+        </div>
+
+
+        <!-- ==================================
+             PRIMEIRA TELA: LOGIN
+        =================================== -->
+
+        <section class="cena cena-login" id="cena-login">
+
+            <!-- LUA -->
+
+            <div class="lua">
+
+                <svg viewBox="0 0 200 200">
+
+                    <defs>
+                        <linearGradient id="luaCor" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#fff2a6"/>
+                            <stop offset="55%" stop-color="#ffd36c"/>
+                            <stop offset="100%" stop-color="#f4a83d"/>
+                        </linearGradient>
+                    </defs>
+
+                    <path
+                        d="M155 20 C75 0 15 55 20 112 C25 175 85 205 155 178 C95 185 55 145 55 100 C55 55 95 25 155 20Z"
+                        fill="url(#luaCor)"
+                        stroke="#713b32"
+                        stroke-width="4"
+                    />
+
+                    <path
+                        d="M142 28 C79 15 29 62 29 112 C32 155 67 184 112 184"
+                        fill="none"
+                        stroke="#fff0a6"
+                        stroke-width="5"
+                        opacity="0.8"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <!-- SOL -->
+
+            <div class="sol">
+
+                <svg viewBox="0 0 200 200">
+
+                    <defs>
+                        <radialGradient id="solCor" cx="40%" cy="35%">
+                            <stop offset="0%" stop-color="#fff58b"/>
+                            <stop offset="65%" stop-color="#ffd32e"/>
+                            <stop offset="100%" stop-color="#f5a900"/>
+                        </radialGradient>
+                    </defs>
+
+                    <g class="raios-sol">
+
+                        <polygon
+                            points="100,22 114.2,46.9 139,32.5 138.9,61.1 167.5,61 153.1,85.8 178,100 153.1,114.2 167.5,139 138.9,138.9 139,167.5 114.2,153.1 100,178 85.8,153.1 61,167.5 61.1,138.9 32.5,139 46.9,114.2 22,100 46.9,85.8 32.5,61 61.1,61.1 61,32.5 85.8,46.9"
+                            fill="#ffbd18"
+                            stroke="#d98a08"
+                            stroke-width="3"
+                        />
+
+                    </g>
+
+                    <circle
+                        cx="100"
+                        cy="100"
+                        r="51"
+                        fill="url(#solCor)"
+                        stroke="#e99b00"
+                        stroke-width="3"
+                    />
+
+                    <circle
+                        cx="82"
+                        cy="80"
+                        r="13"
+                        fill="#fff9b0"
+                        opacity="0.45"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <!-- PLANETAS DECORATIVOS DA PRIMEIRA TELA -->
+
+            <div class="planeta-fundo planeta-fundo-1"></div>
+            <div class="planeta-fundo planeta-fundo-2"></div>
+            <div class="planeta-fundo planeta-fundo-3"></div>
+
+
+            <!-- CARTÃO DE LOGIN -->
+
+            <div class="login-container">
+
+                <div class="login-card">
+
+                    <header class="login-header">
+
+                        <div class="icone-lua">☾</div>
+
+                        <h1>Um universo para você</h1>
+
+                        <p>
+                            Antes de entrar, preciso saber se é realmente você...
+                        </p>
+
+                        <div class="divisor">
+                            <span>✦</span>
+                        </div>
+
+                    </header>
+
+
+                    <form id="form-login">
+
+                        <!-- USUÁRIO -->
+
+                        <div class="campo-grupo">
+
+                            <label for="usuario">
+                                Seu nome de acesso
+                            </label>
+
+                            <input
+                                type="text"
+                                id="usuario"
+                                placeholder="Digite seu usuário..."
+                                autocomplete="username"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="botao-dica"
+                                id="botao-dica-usuario"
+                            >
+                                ✧ Precisa de uma dica?
+                            </button>
+
+                            <div class="mensagem-dica" id="dica-usuario">
+                                Uma dica especial aparecerá aqui...
+                            </div>
+
+                        </div>
+
+
+                        <!-- SENHA -->
+
+                        <div class="campo-grupo">
+
+                            <label for="senha">
+                                Sua senha secreta
+                            </label>
+
+                            <input
+                                type="password"
+                                id="senha"
+                                placeholder="Digite sua senha..."
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="botao-dica"
+                                id="botao-dica-senha"
+                            >
+                                ✧ Esqueceu a senha? Peça uma dica
+                            </button>
+
+                            <div class="mensagem-dica" id="dica-senha">
+                                Outra dica carinhosa aparecerá aqui...
+                            </div>
+
+                        </div>
+
+
+                        <!-- FEEDBACK -->
+
+                        <p
+                            id="mensagem-login"
+                            class="mensagem-login"
+                            aria-live="polite"
+                        ></p>
+
+
+                        <!-- ENTRAR -->
+
+                        <button type="submit" class="botao-entrar">
+
+                            ENTRAR NO NOSSO UNIVERSO
+
+                            <span>✦</span>
+
+                        </button>
+
+                    </form>
+
+
+                    <footer class="login-footer">
+
+                        <span>✧</span>
+
+                        Um lugar que existe só para você
+
+                        <span>✧</span>
+
+                    </footer>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================
+             SEGUNDA TELA: PLANETAS
+        =================================== -->
+
+        <section class="cena cena-planetas" id="cena-planetas">
+
+            <div class="exploracao-conteudo">
+
+                <header class="exploracao-header">
+
+                    <span class="pequeno-detalhe">
+                        ✧ UM UNIVERSO PARTICULAR ✧
+                    </span>
+
+                    <h1>Existe um universo inteiro...</h1>
+
+                    <p>
+                        E eu quero te mostrar cada pedacinho dele.
+                    </p>
+
+                    <div class="divisor">
+                        <span>✦</span>
+                    </div>
+
+                </header>
+
+
+                <!-- PLANETAS -->
+
+                <div class="sistema-planetas">
+
+
+                    <!-- PLANETA FOTOS -->
+
+                    <div class="planeta-card planeta-card-1">
+
+                        <div class="planeta-ilustrado planeta-rosa">
+
+                            <span class="mancha mancha-1"></span>
+                            <span class="mancha mancha-2"></span>
+                            <span class="mancha mancha-3"></span>
+
+                            <span class="anel"></span>
+
+                        </div>
+
+                        <span class="nome-planeta">
+                            Planeta Fotos
+                        </span>
+
+                    </div>
+
+
+                    <!-- PLANETA VÍDEOS -->
+
+                    <div class="planeta-card planeta-card-2">
+
+                        <div class="planeta-ilustrado planeta-azul">
+
+                            <span class="mancha mancha-1"></span>
+                            <span class="mancha mancha-2"></span>
+                            <span class="mancha mancha-3"></span>
+
+                        </div>
+
+                        <span class="nome-planeta">
+                            Planeta Vídeos
+                        </span>
+
+                    </div>
+
+
+                    <!-- PLANETA SONHOS -->
+
+                    <div class="planeta-card planeta-card-3">
+
+                        <div class="planeta-ilustrado planeta-dourado">
+
+                            <span class="mancha mancha-1"></span>
+                            <span class="mancha mancha-2"></span>
+                            <span class="mancha mancha-3"></span>
+
+                            <span class="anel"></span>
+
+                        </div>
+
+                        <span class="nome-planeta">
+                            Planeta Sonhos
+                        </span>
+
+                    </div>
+
+
+                    <!-- PLANETA CUTE CUTE -->
+
+                    <div class="planeta-card planeta-card-4">
+
+                        <div class="planeta-ilustrado planeta-verde">
+
+                            <span class="mancha mancha-1"></span>
+                            <span class="mancha mancha-2"></span>
+                            <span class="mancha mancha-3"></span>
+
+                        </div>
+
+                        <span class="nome-planeta">
+                            Planeta Cute Cute
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <footer class="exploracao-footer">
+
+                    <span>✧</span>
+
+                    Escolha um planeta para explorar
+
+                    <span>✧</span>
+
+                </footer>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/img/script.js"></script>
+
+</body>
+</html>
