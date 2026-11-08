@@ -1372,3 +1372,548 @@ animarEstrelas();
     });
 
 })();
+/* =====================================================
+   PLANETA CUTE CUTE — LÓGICA INDEPENDENTE
+===================================================== */
+
+(() => {
+    const planetaCute = document.querySelector(".planeta-card-4");
+    const cenaPlanetas = document.querySelector("#cena-planetas");
+    const conteudoPlanetas = document.querySelector(".exploracao-conteudo");
+
+    if (!planetaCute || !cenaPlanetas || !conteudoPlanetas) {
+        console.warn("Planeta Cute Cute: elementos não encontrados.");
+        return;
+    }
+
+    // ================================================
+    // DECLARAÇÃO PRINCIPAL
+    // ================================================
+
+    const cartinha = {
+        titulo: "Escrito para a menina mais especial da minha vida ❤️",
+
+        paragrafos: [
+            "Em palavras, eu não consigo explicar o quanto você é especial para mim, mas posso fazer algumas comparações para tentar te fazer compreender: você é tão especial para mim quanto a Lua é para a noite; você é tão importante para mim quanto o coração é para o corpo; você é tão necessária quanto a esperança é para quem sonha; você é como a peça que faltava em um quebra-cabeça que eu nem sabia estar incompleto.",
+
+            "O amor que eu sinto por você não tem medidas, é imensurável. Não existe comparação capaz de expressar o quão grande ele é, pois, mesmo que eu tentasse compará-lo com a imensidão do mar, do céu ou do universo, ainda assim não seria suficiente, porque até mesmo essas coisas possuem limites, enquanto o que eu sinto por você parece não ter fim.",
+
+            "Obrigado por colorir essa minha vida preta e branca e sem graça, e por dar movimento à minha vida monótona. Amo e fico ansioso pelas sextas-feiras para poder voltar e te encontrar novamente. Com certeza, você é o motivo dos meus sorrisos e das minhas risadas mais sinceras.",
+
+            "Eu te amo demais, meu amorzinho! ❤️"
+        ]
+    };
+
+    // ================================================
+    // 20 COISINHAS QUE AMO EM VOCÊ
+    // ================================================
+
+    const coisinhas = [
+        "Amo sua risada.",
+        "Amo tagarelar com você.",
+        "Amo gastar meu dinheirinho com você.",
+        "Amo fazer raiva a você KKKKKKK.",
+        "Amo seu sorriso.",
+        "Amo seus olhos lindos.",
+        "Amo fazer massagem em você, rs.",
+        "Amo estalar seus dedos.",
+        "Amo seus beijinhos.",
+        "Amo ficar de denguinho com você.",
+        "Amo suas raras receitinhas.",
+        "Amo seus presentinhos que você me dá.",
+        "Amo quando você não atrasa (muito raro).",
+        "Amo nossas bobagens.",
+        "Amo nossos dates.",
+        "Amo seu estilo loba meiga.",
+        "Amo sua pipoca.",
+        "Amo o quanto você é uma menina inteligente.",
+        "Amo seu abraço.",
+        "E, por último: amo te amar."
+    ];
+
+    // ================================================
+    // CRIAR A GALERIA
+    // ================================================
+
+    const galeria = document.createElement("section");
+    galeria.className = "galeria-cute";
+    galeria.setAttribute("aria-label", "Planeta Cute Cute");
+    galeria.setAttribute("aria-hidden", "true");
+
+    galeria.innerHTML = `
+        <div class="cute-conteudo">
+
+            <button class="botao-voltar-cute" type="button">
+                ← Voltar ao universo
+            </button>
+
+            <header class="cute-header">
+                <span class="cute-detalhe">
+                    ✧ UM CANTINHO FEITO COM AMOR ✧
+                </span>
+
+                <h1>Planeta Cute Cute ♡</h1>
+
+                <p>
+                    Um pequeno lugar para tentar mostrar
+                    um pouquinho do tamanho do meu amor por você.
+                </p>
+
+                <div class="cute-divisor">♡ ✦ ♡</div>
+            </header>
+
+            <!-- CARTINHA -->
+
+            <section class="cute-secao">
+                <h2 class="cute-titulo-secao">
+                    Uma cartinha para você
+                </h2>
+
+                <p class="cute-descricao">
+                    Escrevi algumas palavras que espero que façam
+                    você sentir um pouquinho do que sinto por você.
+                </p>
+
+                <button class="cute-envelope" type="button">
+                    <span class="cute-envelope-icone">💌</span>
+                    <strong>Uma cartinha especial</strong>
+                    <span>Clique para abrir seu presente</span>
+                </button>
+
+                <article class="cute-cartinha">
+                    <h3 class="cartinha-titulo"></h3>
+                    <div class="cartinha-texto"></div>
+                    <span class="cute-cartinha-assinatura">
+                        Com todo o meu amor. ❤️
+                    </span>
+                </article>
+            </section>
+
+            <div class="cute-divisor">♡ ✦ ♡</div>
+
+            <!-- 20 COISINHAS -->
+
+            <section class="cute-secao">
+                <h2 class="cute-titulo-secao">
+                    20 coisinhas que amo em você
+                </h2>
+
+                <p class="cute-descricao">
+                    Existem infinitos motivos, mas separei
+                    alguns para você descobrir. ♡
+                </p>
+
+                <div class="cute-progresso">
+                    <span class="cute-progresso-texto">
+                        0 de 20 coisinhas descobertas
+                    </span>
+
+                    <div class="cute-progresso-fundo">
+                        <div class="cute-progresso-barra"></div>
+                    </div>
+                </div>
+
+                <div class="cute-coracoes"></div>
+            </section>
+
+            <div class="cute-divisor">♡ ✦ ♡</div>
+
+            <!-- ESCOLHER NOVAMENTE -->
+
+            <section class="cute-escolha">
+                <span class="cute-escolha-icone">♡</span>
+
+                <h2 class="cute-titulo-secao">
+                    Se eu pudesse escolher de novo...
+                </h2>
+
+                <p class="cute-descricao">
+                    Será que minha escolha seria diferente?
+                </p>
+
+                <button class="cute-botao botao-escolha" type="button">
+                    Descobrir a resposta ♡
+                </button>
+            </section>
+
+            <!-- PRESENTE FINAL -->
+
+            <section class="cute-presente">
+                <span class="cute-presente-icone">🎁</span>
+
+                <h2 class="cute-titulo-secao">
+                    Tem mais uma coisinha para você...
+                </h2>
+
+                <p class="cute-descricao">
+                    Preparei um último presentinho.
+                </p>
+
+                <button class="cute-botao botao-presente" type="button">
+                    Abrir meu presente ♡
+                </button>
+            </section>
+
+            <footer class="cute-rodape">
+                Feito com muito amor, para a menina que eu amo. ♡
+            </footer>
+
+        </div>
+    `;
+
+    cenaPlanetas.appendChild(galeria);
+
+    // ================================================
+    // ELEMENTOS
+    // ================================================
+
+    const botaoVoltar = galeria.querySelector(".botao-voltar-cute");
+
+    const botaoEnvelope = galeria.querySelector(".cute-envelope");
+    const cartinhaVisual = galeria.querySelector(".cute-cartinha");
+    const tituloCartinha = galeria.querySelector(".cartinha-titulo");
+    const textoCartinha = galeria.querySelector(".cartinha-texto");
+
+    const muralCoracoes = galeria.querySelector(".cute-coracoes");
+    const textoProgresso = galeria.querySelector(".cute-progresso-texto");
+    const barraProgresso = galeria.querySelector(".cute-progresso-barra");
+
+    const botaoEscolha = galeria.querySelector(".botao-escolha");
+    const botaoPresente = galeria.querySelector(".botao-presente");
+
+    // ================================================
+    // PREENCHER CARTINHA
+    // ================================================
+
+    tituloCartinha.textContent = cartinha.titulo;
+
+    cartinha.paragrafos.forEach((paragrafo) => {
+        const p = document.createElement("p");
+        p.textContent = paragrafo;
+        textoCartinha.appendChild(p);
+    });
+
+    botaoEnvelope.addEventListener("click", () => {
+        const aberta = cartinhaVisual.classList.toggle("cartinha-aberta");
+
+        botaoEnvelope.querySelector("strong").textContent =
+            aberta ? "Minha declaração para você ❤️" : "Uma cartinha especial";
+
+        botaoEnvelope.querySelector("span:last-child").textContent =
+            aberta ? "Clique novamente para fechar" : "Clique para abrir seu presente";
+
+        if (aberta) {
+            cartinhaVisual.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }
+    });
+
+    // ================================================
+    // MODAL DAS COISINHAS
+    // ================================================
+
+    const modal = document.createElement("div");
+    modal.className = "cute-overlay";
+    modal.setAttribute("aria-hidden", "true");
+
+    modal.innerHTML = `
+        <article class="cute-modal">
+            <span class="cute-modal-icone">♡</span>
+            <span class="cute-modal-numero"></span>
+            <h3 class="cute-modal-titulo"></h3>
+            <p class="cute-modal-texto"></p>
+
+            <button class="cute-fechar-modal" type="button">
+                Guardar esse carinho ♡
+            </button>
+        </article>
+    `;
+
+    document.body.appendChild(modal);
+
+    const numeroModal = modal.querySelector(".cute-modal-numero");
+    const tituloModal = modal.querySelector(".cute-modal-titulo");
+    const textoModal = modal.querySelector(".cute-modal-texto");
+    const botaoFecharModal = modal.querySelector(".cute-fechar-modal");
+
+    let coracaoAtual = null;
+    const coisinhasVisitadas = new Set();
+
+    function abrirModal(indice, botao) {
+        coracaoAtual = botao;
+
+        numeroModal.textContent =
+            `COISINHA ${String(indice + 1).padStart(2, "0")} DE 20`;
+
+        tituloModal.textContent = "Uma das minhas coisas favoritas...";
+        textoModal.textContent = coisinhas[indice];
+
+        modal.classList.add("cute-overlay-aberto");
+        modal.setAttribute("aria-hidden", "false");
+
+        botaoFecharModal.focus();
+
+        coisinhasVisitadas.add(indice);
+        botao.classList.add("cute-descoberto");
+
+        atualizarProgresso();
+    }
+
+    function fecharModal() {
+        modal.classList.remove("cute-overlay-aberto");
+        modal.setAttribute("aria-hidden", "true");
+
+        if (coracaoAtual) {
+            coracaoAtual.focus();
+        }
+    }
+
+    function atualizarProgresso() {
+        const quantidade = coisinhasVisitadas.size;
+        const porcentagem = (quantidade / coisinhas.length) * 100;
+
+        textoProgresso.textContent =
+            `${quantidade} de ${coisinhas.length} coisinhas descobertas`;
+
+        barraProgresso.style.width = `${porcentagem}%`;
+
+        if (quantidade === coisinhas.length) {
+            textoProgresso.textContent =
+                "Você descobriu todas as 20 coisinhas! Mas ainda existem infinitos motivos. ❤️";
+        }
+    }
+
+    coisinhas.forEach((coisinha, indice) => {
+        const botao = document.createElement("button");
+
+        botao.type = "button";
+        botao.className = "cute-coracao";
+
+        botao.innerHTML = `
+            <span>♡</span>
+            <span>${String(indice + 1).padStart(2, "0")}</span>
+        `;
+
+        botao.setAttribute(
+            "aria-label",
+            `Descobrir coisinha número ${indice + 1}`
+        );
+
+        botao.addEventListener("click", () => {
+            abrirModal(indice, botao);
+        });
+
+        muralCoracoes.appendChild(botao);
+    });
+
+    botaoFecharModal.addEventListener("click", fecharModal);
+
+    modal.addEventListener("click", (evento) => {
+        if (evento.target === modal) {
+            fecharModal();
+        }
+    });
+
+    // ================================================
+    // SE EU PUDESSE ESCOLHER DE NOVO
+    // ================================================
+
+    const modalEscolha = document.createElement("div");
+    modalEscolha.className = "cute-overlay";
+    modalEscolha.setAttribute("aria-hidden", "true");
+
+    modalEscolha.innerHTML = `
+        <article class="cute-modal">
+            <span class="cute-modal-icone">💗</span>
+
+            <span class="cute-modal-numero">
+                MINHA ESCOLHA
+            </span>
+
+            <h3>Eu escolheria você. Sempre você.</h3>
+
+            <p>
+                Se eu pudesse voltar no tempo e viver tudo novamente,
+                sabendo de cada sorriso, cada abraço, cada conversa,
+                cada momento e até mesmo de cada dificuldade,
+                ainda assim escolheria encontrar você.
+
+                <br><br>
+
+                Entre todas as pessoas, todos os caminhos e todas
+                as possibilidades desse universo, minha escolha
+                continuaria sendo você. ❤️
+            </p>
+
+            <button class="cute-fechar-modal" type="button">
+                Que bom que tenho você ♡
+            </button>
+        </article>
+    `;
+
+    document.body.appendChild(modalEscolha);
+
+    const botaoFecharEscolha =
+        modalEscolha.querySelector(".cute-fechar-modal");
+
+    function abrirEscolha() {
+        modalEscolha.classList.add("cute-overlay-aberto");
+        modalEscolha.setAttribute("aria-hidden", "false");
+        botaoFecharEscolha.focus();
+    }
+
+    function fecharEscolha() {
+        modalEscolha.classList.remove("cute-overlay-aberto");
+        modalEscolha.setAttribute("aria-hidden", "true");
+        botaoEscolha.focus();
+    }
+
+    botaoEscolha.addEventListener("click", abrirEscolha);
+    botaoFecharEscolha.addEventListener("click", fecharEscolha);
+
+    modalEscolha.addEventListener("click", (evento) => {
+        if (evento.target === modalEscolha) {
+            fecharEscolha();
+        }
+    });
+
+    // ================================================
+    // PRESENTE SURPRESA
+    // ================================================
+
+    const modalPresente = document.createElement("div");
+    modalPresente.className = "cute-overlay";
+    modalPresente.setAttribute("aria-hidden", "true");
+
+    modalPresente.innerHTML = `
+        <article class="cute-modal">
+            <span class="cute-modal-icone">🎁</span>
+
+            <span class="cute-modal-numero">
+                UM PRESENTINHO PARA VOCÊ
+            </span>
+
+            <h3>Se eu pudesse te dar uma coisa...</h3>
+
+            <p>
+                Seria a oportunidade de se enxergar pelos meus olhos
+                por alguns minutos.
+
+                <br><br>
+
+                Assim você entenderia o quanto é especial,
+                o quanto é linda e o quanto é amada.
+
+                <br><br>
+
+                Talvez assim você conseguisse enxergar um pouquinho
+                do que eu vejo todos os dias quando olho para você.
+
+                <br><br>
+
+                Eu te amo, meu amorzinho! ❤️
+            </p>
+
+            <button class="cute-fechar-modal" type="button">
+                Eu te amo! ❤️
+            </button>
+        </article>
+    `;
+
+    document.body.appendChild(modalPresente);
+
+    const botaoFecharPresente =
+        modalPresente.querySelector(".cute-fechar-modal");
+
+    function abrirPresente() {
+        modalPresente.classList.add("cute-overlay-aberto");
+        modalPresente.setAttribute("aria-hidden", "false");
+        botaoFecharPresente.focus();
+    }
+
+    function fecharPresente() {
+        modalPresente.classList.remove("cute-overlay-aberto");
+        modalPresente.setAttribute("aria-hidden", "true");
+        botaoPresente.focus();
+    }
+
+    botaoPresente.addEventListener("click", abrirPresente);
+    botaoFecharPresente.addEventListener("click", fecharPresente);
+
+    modalPresente.addEventListener("click", (evento) => {
+        if (evento.target === modalPresente) {
+            fecharPresente();
+        }
+    });
+
+    // ================================================
+    // ABRIR E FECHAR PLANETA
+    // ================================================
+
+    function abrirGaleriaCute() {
+        galeria.classList.add("cute-aberta");
+        galeria.setAttribute("aria-hidden", "false");
+
+        conteudoPlanetas.classList.add("conteudo-escondido");
+
+        botaoVoltar.focus();
+    }
+
+    function fecharGaleriaCute() {
+        fecharModal();
+        fecharEscolha();
+        fecharPresente();
+
+        galeria.classList.remove("cute-aberta");
+        galeria.setAttribute("aria-hidden", "true");
+
+        conteudoPlanetas.classList.remove("conteudo-escondido");
+
+        planetaCute.focus();
+    }
+
+    planetaCute.setAttribute("role", "button");
+    planetaCute.setAttribute("tabindex", "0");
+    planetaCute.setAttribute("aria-label", "Explorar Planeta Cute Cute");
+
+    planetaCute.addEventListener("click", abrirGaleriaCute);
+
+    planetaCute.addEventListener("keydown", (evento) => {
+        if (evento.key === "Enter" || evento.key === " ") {
+            evento.preventDefault();
+            abrirGaleriaCute();
+        }
+    });
+
+    botaoVoltar.addEventListener("click", fecharGaleriaCute);
+
+    // ================================================
+    // TECLADO
+    // ================================================
+
+    document.addEventListener("keydown", (evento) => {
+        if (evento.key !== "Escape") return;
+
+        if (modalPresente.classList.contains("cute-overlay-aberto")) {
+            fecharPresente();
+            return;
+        }
+
+        if (modalEscolha.classList.contains("cute-overlay-aberto")) {
+            fecharEscolha();
+            return;
+        }
+
+        if (modal.classList.contains("cute-overlay-aberto")) {
+            fecharModal();
+            return;
+        }
+
+        if (galeria.classList.contains("cute-aberta")) {
+            fecharGaleriaCute();
+        }
+    });
+
+})();
