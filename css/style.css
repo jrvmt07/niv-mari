@@ -2085,3 +2085,1049 @@ body {
         font-size: 12px;
     }
 }
+/* =====================================================
+   PLANETA VÍDEOS — CINEMA ROMÂNTICO NO ESPAÇO
+   ===================================================== */
+
+.cena-planetas .galeria-videos {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    width: 100%;
+    min-height: 100%;
+    padding: 45px 6%;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    background:
+        radial-gradient(ellipse at 15% 15%, rgba(75, 83, 190, 0.22), transparent 40%),
+        radial-gradient(ellipse at 85% 75%, rgba(137, 65, 190, 0.20), transparent 42%),
+        linear-gradient(135deg, #080b22, #11102d 55%, #090b20);
+
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.cena-planetas .galeria-videos.galeria-videos-aberta {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.galeria-videos::before,
+.galeria-videos::after {
+    content: "";
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(2px);
+}
+
+.galeria-videos::before {
+    width: 3px;
+    height: 3px;
+    top: 15%;
+    left: 12%;
+    background: white;
+    box-shadow:
+        120px 90px #fff,
+        260px 30px #b9c7ff,
+        420px 180px #fff,
+        600px 70px #d7c4ff,
+        780px 210px #fff,
+        950px 40px #b9c7ff,
+        1100px 160px #fff,
+        150px 420px #d7c4ff,
+        500px 520px #fff,
+        900px 430px #b9c7ff;
+    opacity: 0.65;
+}
+
+.galeria-videos::after {
+    width: 2px;
+    height: 2px;
+    top: 35%;
+    right: 10%;
+    background: white;
+    box-shadow:
+        -100px 100px #fff,
+        -250px 220px #b9c7ff,
+        -400px 50px #fff,
+        -600px 300px #d7c4ff,
+        -800px 120px #fff;
+    opacity: 0.5;
+}
+
+/* Cabeçalho */
+
+.videos-header {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto 45px;
+    text-align: center;
+    animation: entradaVideos 0.8s ease both;
+}
+
+.videos-detalhe {
+    color: #aaa9ff;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.videos-header h2 {
+    color: #f3efff;
+    font-family: inherit;
+    font-size: clamp(32px, 5vw, 55px);
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin: 0 0 14px;
+    text-shadow: 0 0 25px rgba(153, 142, 255, 0.45);
+}
+
+.videos-header p {
+    color: #c2c0df;
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.videos-linha {
+    width: 100px;
+    height: 1px;
+    margin: 25px auto 0;
+    background: linear-gradient(90deg, transparent, #aaa2ff, transparent);
+}
+
+/* Botão voltar */
+
+.botao-voltar-videos {
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: 0 auto 35px;
+    padding: 11px 24px;
+    border: 1px solid rgba(181, 174, 255, 0.45);
+    border-radius: 30px;
+    background: rgba(115, 105, 190, 0.12);
+    color: #e6e1ff;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.botao-voltar-videos:hover {
+    background: rgba(145, 130, 235, 0.25);
+    border-color: #c5baff;
+    box-shadow: 0 0 20px rgba(145, 130, 235, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Mural de vídeos */
+
+.mural-videos {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 50px;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 115px;
+    gap: 20px;
+    grid-auto-flow: dense;
+}
+
+/* Cartões */
+
+.cartao-video {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 17px;
+    border: 1px solid rgba(190, 180, 255, 0.24);
+
+    background:
+        radial-gradient(circle at 25% 25%, rgba(137, 131, 255, 0.35), transparent 35%),
+        radial-gradient(circle at 80% 80%, rgba(164, 91, 210, 0.25), transparent 40%),
+        linear-gradient(145deg, #242653, #17152f 65%, #0c1028);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.25),
+        inset 0 0 25px rgba(177, 164, 255, 0.06);
+
+    cursor: pointer;
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+
+    animation: entradaVideos 0.7s ease both;
+}
+
+.cartao-video:hover {
+    transform: translateY(-6px) scale(1.015);
+    border-color: rgba(205, 194, 255, 0.75);
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(139, 123, 255, 0.2);
+}
+
+.cartao-video.vertical {
+    grid-column: span 1;
+    grid-row: span 3;
+}
+
+.cartao-video.horizontal {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.cartao-video::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, transparent 35%, rgba(7, 8, 25, 0.9) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.video-numero {
+    position: absolute;
+    z-index: 2;
+    top: 13px;
+    left: 15px;
+    color: rgba(235, 231, 255, 0.65);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.video-play {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 50%;
+    background: rgba(193, 181, 255, 0.16);
+    backdrop-filter: blur(8px);
+
+    color: white;
+    font-size: 19px;
+    padding-left: 4px;
+
+    transition: 0.3s ease;
+}
+
+.cartao-video:hover .video-play {
+    background: rgba(180, 158, 255, 0.38);
+    box-shadow: 0 0 25px rgba(185, 165, 255, 0.5);
+    transform: translate(-50%, -50%) scale(1.12);
+}
+
+.video-informacoes {
+    position: absolute;
+    z-index: 2;
+    left: 17px;
+    right: 17px;
+    bottom: 16px;
+}
+
+.video-informacoes h3 {
+    margin: 0 0 7px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+}
+
+.video-informacoes p {
+    margin: 0;
+    color: rgba(231, 227, 255, 0.78);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Player ampliado */
+
+.visualizador-video {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+    box-sizing: border-box;
+
+    background: rgba(4, 5, 18, 0.94);
+    backdrop-filter: blur(14px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: 0.3s ease;
+}
+
+.visualizador-video.visualizador-aberto {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.player-video-conteudo {
+    position: relative;
+    width: min(100%, 950px);
+    max-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: entradaVideos 0.4s ease both;
+}
+
+.player-video {
+    display: block;
+    max-width: 100%;
+    max-height: 72vh;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    background: #05050c;
+    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.55);
+}
+
+.player-video-titulo {
+    color: #f2edff;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    margin: 18px 0 7px;
+}
+
+.player-video-legenda {
+    color: #c4bfdf;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 0 15px;
+}
+
+.fechar-video {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    z-index: 3;
+
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+
+    background: rgba(36, 31, 72, 0.9);
+    color: white;
+    font-size: 23px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.fechar-video:hover {
+    background: #6655a8;
+    transform: rotate(90deg);
+}
+
+.navegacao-videos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 5px;
+}
+
+.navegacao-videos button {
+    padding: 9px 18px;
+    border: 1px solid rgba(190, 180, 255, 0.4);
+    border-radius: 25px;
+    background: rgba(110, 95, 175, 0.18);
+    color: #eeeaff;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.navegacao-videos button:hover {
+    background: rgba(145, 125, 220, 0.35);
+    border-color: #c9bdff;
+}
+
+.video-contador {
+    color: #aaa5d2;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.video-erro {
+    color: #f3c9d8;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+/* Animação */
+
+@keyframes entradaVideos {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+
+@media (max-width: 850px) {
+    .mural-videos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: 105px;
+        gap: 15px;
+    }
+
+    .cartao-video.horizontal {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .cartao-video.vertical {
+        grid-column: span 1;
+        grid-row: span 3;
+    }
+
+    .cena-planetas .galeria-videos {
+        padding: 35px 5%;
+    }
+}
+
+@media (max-width: 600px) {
+    .cena-planetas .galeria-videos {
+        padding: 30px 16px;
+    }
+
+    .videos-header {
+        margin-bottom: 30px;
+    }
+
+    .videos-header p {
+        font-size: 12px;
+    }
+
+    .mural-videos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: 95px;
+        gap: 11px;
+    }
+
+    .cartao-video.vertical {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+
+    .cartao-video.horizontal {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .video-informacoes {
+        left: 11px;
+        right: 11px;
+        bottom: 11px;
+    }
+
+    .video-informacoes h3 {
+        font-size: 12px;
+    }
+
+    .video-informacoes p {
+        font-size: 10px;
+    }
+
+    .video-play {
+        width: 43px;
+        height: 43px;
+        font-size: 15px;
+    }
+
+    .visualizador-video {
+        padding: 15px;
+    }
+
+    .player-video {
+        max-height: 65vh;
+    }
+
+    .fechar-video {
+        top: -15px;
+        right: -5px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .player-video-titulo {
+        font-size: 17px;
+    }
+
+    .player-video-legenda {
+        font-size: 11px;
+    }
+
+    .navegacao-videos {
+        gap: 9px;
+    }
+
+    .navegacao-videos button {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .galeria-videos *,
+    .galeria-videos *::before,
+    .galeria-videos *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+/* Capas dos vídeos */
+
+.cartao-video {
+    isolation: isolate;
+}
+
+.cartao-video .video-capa {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.cartao-video:hover .video-capa {
+    transform: scale(1.06);
+    opacity: 1;
+}
+
+.cartao-video::before {
+    z-index: 1;
+}
+
+.cartao-video .video-numero,
+.cartao-video .video-play,
+.cartao-video .video-informacoes {
+    z-index: 2;
+}
+
+/* =====================================================
+   PLANETA SONHOS — UNIVERSO DOS NOSSOS AMANHÃS
+   Estilos independentes dos outros planetas.
+===================================================== */
+
+.cena-planetas .galeria-sonhos {
+    position: absolute;
+    inset: 0;
+    z-index: 22;
+    overflow-y: auto;
+    padding: 30px 22px 35px;
+
+    background:
+        radial-gradient(ellipse at 50% 35%, rgba(174, 126, 48, .16), transparent 48%),
+        radial-gradient(ellipse at 15% 85%, rgba(100, 67, 130, .18), transparent 45%),
+        linear-gradient(145deg, rgba(12, 12, 29, .98), rgba(27, 19, 43, .98));
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity .6s ease, visibility .6s ease;
+}
+
+.cena-planetas .galeria-sonhos.sonhos-aberta {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.sonhos-header {
+    max-width: 760px;
+    margin: 0 auto 15px;
+    text-align: center;
+    animation: sonhosSurgir .8s ease both;
+}
+
+.sonhos-detalhe {
+    display: block;
+    margin-bottom: 12px;
+    color: #e8c77e;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(232, 199, 126, .5);
+}
+
+.sonhos-header h1 {
+    margin-bottom: 12px;
+    color: #fff0d2;
+    font-size: clamp(27px, 4vw, 40px);
+    font-weight: normal;
+    text-shadow: 0 0 25px rgba(230, 183, 100, .25);
+}
+
+.sonhos-header p {
+    color: #d8cce1;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.sonhos-frase {
+    max-width: 650px;
+    margin: 22px auto 0;
+    color: #e8d5ad;
+    font-family: Georgia, serif;
+    font-size: clamp(15px, 2vw, 19px);
+    font-style: italic;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.botao-voltar-sonhos {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: block;
+    margin: 0 0 5px;
+    padding: 10px 16px;
+
+    border: 1px solid rgba(226, 192, 126, .28);
+    border-radius: 30px;
+
+    background: rgba(29, 24, 43, .85);
+    color: #f1dfbc;
+
+    font-family: Georgia, serif;
+    font-size: 12px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: .3s ease;
+}
+
+.botao-voltar-sonhos:hover {
+    border-color: #e8c77e;
+    box-shadow: 0 0 18px rgba(232, 199, 126, .2);
+    transform: translateX(-3px);
+}
+
+/* Mapa das estrelas */
+
+.sonhos-mapa {
+    position: relative;
+    width: min(1050px, 100%);
+    height: 610px;
+    margin: 5px auto 0;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 50% 50%, rgba(226, 184, 105, .07), transparent 48%),
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, .035), transparent 30%),
+        radial-gradient(circle at 80% 75%, rgba(183, 146, 225, .05), transparent 35%);
+}
+
+/* Pontinhos decorativos do mapa */
+
+.sonhos-mapa::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(1px 1px at 12% 20%, #fff, transparent),
+        radial-gradient(2px 2px at 82% 18%, #e9d39e, transparent),
+        radial-gradient(1px 1px at 65% 75%, #fff, transparent),
+        radial-gradient(2px 2px at 28% 83%, #e9d39e, transparent),
+        radial-gradient(1px 1px at 91% 53%, #fff, transparent),
+        radial-gradient(1px 1px at 48% 12%, #fff, transparent),
+        radial-gradient(2px 2px at 7% 60%, #e9d39e, transparent),
+        radial-gradient(1px 1px at 55% 92%, #fff, transparent);
+
+    opacity: .8;
+}
+
+/* Estrelas clicáveis */
+
+.sonho-estrela {
+    position: absolute;
+    z-index: 2;
+
+    display: grid;
+    place-items: center;
+
+    width: 65px;
+    height: 65px;
+    padding: 0;
+
+    border: 1px solid rgba(242, 210, 145, .25);
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle, rgba(255, 225, 159, .2), rgba(105, 76, 43, .08) 65%, transparent);
+
+    color: #f5d68e;
+    font-size: 29px;
+
+    cursor: pointer;
+
+    text-shadow:
+        0 0 8px #f6d995,
+        0 0 20px rgba(244, 199, 111, .9);
+
+    box-shadow:
+        0 0 15px rgba(235, 190, 105, .15),
+        inset 0 0 15px rgba(255, 226, 166, .08);
+
+    transform: translate(-50%, -50%);
+    animation: estrelaPulsar 3s ease-in-out infinite;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+.sonho-estrela:hover,
+.sonho-estrela:focus-visible {
+    z-index: 4;
+    outline: none;
+    transform: translate(-50%, -50%) scale(1.3);
+
+    background: rgba(245, 211, 142, .2);
+
+    box-shadow:
+        0 0 25px rgba(255, 218, 142, .65),
+        0 0 55px rgba(235, 190, 105, .3);
+}
+
+.sonho-estrela.sonho-visitado {
+    border-color: rgba(255, 225, 159, .7);
+    background: radial-gradient(circle, rgba(255, 220, 151, .3), transparent 75%);
+    color: #fff0bd;
+}
+
+/* Posições das 15 estrelas */
+
+.sonho-estrela:nth-child(1)  { left: 12%; top: 17%; }
+.sonho-estrela:nth-child(2)  { left: 31%; top: 12%; }
+.sonho-estrela:nth-child(3)  { left: 51%; top: 19%; }
+.sonho-estrela:nth-child(4)  { left: 75%; top: 12%; }
+.sonho-estrela:nth-child(5)  { left: 91%; top: 27%; }
+
+.sonho-estrela:nth-child(6)  { left: 21%; top: 43%; }
+.sonho-estrela:nth-child(7)  { left: 43%; top: 42%; }
+.sonho-estrela:nth-child(8)  { left: 67%; top: 43%; }
+.sonho-estrela:nth-child(9)  { left: 87%; top: 57%; }
+
+.sonho-estrela:nth-child(10) { left: 10%; top: 72%; }
+.sonho-estrela:nth-child(11) { left: 32%; top: 77%; }
+.sonho-estrela:nth-child(12) { left: 54%; top: 70%; }
+.sonho-estrela:nth-child(13) { left: 76%; top: 79%; }
+.sonho-estrela:nth-child(14) { left: 94%; top: 85%; }
+.sonho-estrela:nth-child(15) { left: 47%; top: 94%; }
+
+/* Legenda abaixo do mapa */
+
+.sonhos-instrucao {
+    margin: 5px auto 18px;
+    color: #bfb0c9;
+    font-size: 12px;
+    text-align: center;
+}
+
+.sonhos-progresso {
+    margin: 0 auto 22px;
+    color: #e8c77e;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.sonhos-barra {
+    width: min(260px, 75%);
+    height: 4px;
+    margin: 10px auto 0;
+    overflow: hidden;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .1);
+}
+
+.sonhos-barra-preenchimento {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #b98a49, #ffe3a2);
+    box-shadow: 0 0 12px rgba(255, 218, 142, .6);
+    transition: width .5s ease;
+}
+
+/* Cartão individual do sonho */
+
+.sonho-detalhe-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    background: rgba(5, 5, 17, .82);
+    backdrop-filter: blur(10px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: .35s ease;
+}
+
+.sonho-detalhe-overlay.sonho-detalhe-aberto {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.sonho-cartao {
+    position: relative;
+    width: min(490px, 100%);
+    padding: 42px 32px 35px;
+
+    border: 1px solid rgba(231, 194, 125, .35);
+    border-radius: 22px;
+
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(205, 158, 82, .16), transparent 65%),
+        linear-gradient(145deg, #211b30, #111323);
+
+    box-shadow:
+        0 0 45px rgba(214, 171, 100, .13),
+        0 20px 80px rgba(0, 0, 0, .4);
+
+    text-align: center;
+    animation: cartaoSonhoEntrar .45s ease both;
+}
+
+.sonho-cartao-icone {
+    display: block;
+    margin-bottom: 17px;
+    color: #f1ce87;
+    font-size: 37px;
+    text-shadow: 0 0 20px rgba(241, 206, 135, .6);
+}
+
+.sonho-cartao-numero {
+    display: block;
+    margin-bottom: 12px;
+    color: #c9a66c;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.sonho-cartao h2 {
+    margin-bottom: 18px;
+    color: #fff0d2;
+    font-family: Georgia, serif;
+    font-size: clamp(23px, 4vw, 30px);
+    font-weight: normal;
+    line-height: 1.3;
+}
+
+.sonho-cartao p {
+    color: #d8cce1;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.sonho-cartao-assinatura {
+    display: block;
+    margin-top: 25px;
+    color: #e8c77e;
+    font-family: Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.fechar-sonho {
+    margin-top: 27px;
+    padding: 11px 24px;
+
+    border: 1px solid rgba(231, 194, 125, .4);
+    border-radius: 30px;
+
+    background: rgba(190, 147, 77, .13);
+    color: #f5dfb5;
+
+    font-family: Georgia, serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.fechar-sonho:hover {
+    background: rgba(190, 147, 77, .3);
+    box-shadow: 0 0 20px rgba(231, 194, 125, .15);
+}
+
+/* Mensagem final */
+
+.sonhos-final {
+    margin: 20px auto 30px;
+    text-align: center;
+}
+
+.botao-final-sonhos {
+    padding: 14px 25px;
+
+    border: 1px solid rgba(241, 206, 135, .5);
+    border-radius: 30px;
+
+    background: linear-gradient(135deg, rgba(180, 132, 66, .25), rgba(105, 74, 125, .25));
+    color: #f8e3b4;
+
+    font-family: Georgia, serif;
+    font-size: 13px;
+    letter-spacing: .5px;
+
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.botao-final-sonhos:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.botao-final-sonhos:not(:disabled):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(241, 206, 135, .25);
+}
+
+.sonhos-mensagem-final .sonho-cartao {
+    border-color: rgba(255, 220, 153, .55);
+}
+
+.sonhos-mensagem-final h2 {
+    color: #f9dda1;
+}
+
+.sonhos-mensagem-final p {
+    font-family: Georgia, serif;
+    font-size: 15px;
+}
+
+/* Animações */
+
+@keyframes estrelaPulsar {
+    0%, 100% {
+        filter: brightness(.85);
+    }
+    50% {
+        filter: brightness(1.35);
+    }
+}
+
+@keyframes sonhosSurgir {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cartaoSonhoEntrar {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsividade */
+
+@media (max-width: 600px) {
+    .cena-planetas .galeria-sonhos {
+        padding: 20px 12px 25px;
+    }
+
+    .sonhos-mapa {
+        height: 540px;
+    }
+
+    .sonho-estrela {
+        width: 48px;
+        height: 48px;
+        font-size: 23px;
+    }
+
+    .sonhos-header p {
+        font-size: 12px;
+    }
+
+    .sonho-cartao {
+        padding: 38px 23px 28px;
+    }
+
+    .sonho-cartao p {
+        font-size: 13px;
+    }
+
+    .sonhos-frase {
+        font-size: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .galeria-sonhos *,
+    .sonho-estrela {
+        animation: none !important;
+        transition: none !important;
+    }
+}
